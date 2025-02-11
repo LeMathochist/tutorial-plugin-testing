@@ -53,9 +53,32 @@ function renameLayerNames() {
   );
 };
 
-// .getElementById("btnPopulate").addEventListener("click", showLayerNames);
+async function exportReport() {
+  // create a TSV String; this is the header row
+  let tsvString = "Base name\tOpacity\tIsVisible";
+
+  const app = window.require("photoshop").app;
+  app.activeDocument.layers.forEach( (layer) => {
+  
+    tsvString +=
+      "\n" +
+      layer.name +
+      "\t" +
+      layer.opacity +
+      "\t" +
+      (layer.visible ? "yes" : "no");
+  });
+
+  // save the string to the filesystem as "layers.tsv"
+  const storage = window.require("uxp").storeage;
+  const file = await storage.localFileSystem.getFileForSaving("layers.tsv");
+  await file.write(tsvString);
+}
+
 document
-  .getElementById("btnPopulate").addEventListener("click", showLayerNames);
+  .getElementById("btnExport")
+  .addEventListener("click", exportReport);
+
 document
   .getElementById("btnRename")
   .addEventListener("click", renameLayerNames);
