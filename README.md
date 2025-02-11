@@ -18,3 +18,35 @@ Click the ••• button next to the corresponding workspace entry, and click 
 
 * Read more about creating and debugging plugins using the UDT application [here](https://developer.adobe.com/photoshop/uxp/2022/guides/devtool/udt-walkthrough/). 
 * We build on this starter template and show you how to [edit a document](https://developer.adobe.com/photoshop/uxp/2022/guides/getting-started/editing-the-document/) and [write a file](https://developer.adobe.com/photoshop/uxp/2022/guides/getting-started/writing-a-file/) using UXP. 
+
+## How it Works
+
+### `manifest.json`
+
+This file dictates the plugin specifics needed to run
+
+1. The `"app"` key dictates what Adobe program this applies to
+
+2. The `"minVersion"` key dictates what the minimum version of the app named in `app` that the plugin will work with. 
+    - **Will need to ascertain how to deploy a version for a `minVersion` less that working.** _probably by installing that version_
+
+3. The `"main"` key is what file is loaded when the plugin is loaded by `app`. 
+    - in the Tutorial, this is `index.html`,
+    
+### `index.html`    
+
+This an HTML5 document that
+    
+    - defines the plugin's UI panels
+
+    - uses a *subset* of the [HTML/CSS/JS Features](https://developer.adobe.com/photoshop/uxp/2022/uxp-api/)
+    
+    - THere are also custom components that are available in the [Spectrum UXP Components](https://developer.adobe.com/photoshop/uxp/2022/uxp-api/reference-spectrum/) library that leverave the Spectrum Design System to make the plugin feel native to the Adobe application environment
+
+### `index.js`
+
+In this tutorial, this file defines a `click` listener on the 'Populate Layers' button, accessing the PS API to populate an `<sp-boddy>` tag that has the  `id = layers` name in it, providing the names of all the layers in the document, including the default Background.
+
+The function `showLayerNames()` is defined to import the `Photoshop` API module when called. 
+
+We can do this with various API modules. 
