@@ -46,7 +46,7 @@ This an HTML5 document that
     
     - THere are also custom components that are available in the [Spectrum UXP Components](https://developer.adobe.com/photoshop/uxp/2022/uxp-api/reference-spectrum/) library that leverave the Spectrum Design System to make the plugin feel native to the Adobe application environment
 
-### `index.js`
+### `main.js`
 
 In this tutorial, this file defines a `click` listener on the 'Populate Layers' button, accessing the PS API to populate an `<sp-boddy>` tag that has the  `id = layers` name in it, providing the names of all the layers in the document, including the default Background.
 
@@ -59,4 +59,8 @@ We can do this with various API modules.
 **NB. During Development, if you started the plugin with `Load`, when you update `manifest.json`, we must fully reload the plugin in the UDT. If you instead start it with `Load & Watch`, UDT will watch the project folder for changes and automatically reload it with the changes** 
 
 Viewing the [The Photoshop API Reference](https://developer.adobe.com/photoshop/uxp/2022/ps_reference/), and looking at the `Layer class`
+
+## Adjusting the Plugin: Editing the PS Document
+
+We remove the `sp-body` tags and rename the button to `Rename Layers`
 
