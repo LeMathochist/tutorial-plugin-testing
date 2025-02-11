@@ -38,10 +38,13 @@ function renameLayerNames() {
       // Grants Document Write Access by executing as if within a Modal Context
 
       const app = window.require("photoshop").app;
-
+      
       app.activeDocument.layers.forEach( 
         (layer) => {
-          layer.name = `${layer.name} (${layer.opacity} %)`;
+          // prevent repeated appends of opacity value with regex lookup
+          const regExp = /^(.*?)( \(\d+ %\))?$/;
+          const baseName = layer.name.match(regExp)[1];
+          layer.name = `${baseName} (${layer.opacity} %)`;
       });
     },
     {

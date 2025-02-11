@@ -66,3 +66,12 @@ Viewing the [The Photoshop API Reference](https://developer.adobe.com/photoshop/
 
 2. Now we update `index.js` to add the function, `renmeLayerNames`, allowing write access to the document, by calling the Photoshop Core Module function `executeAsModal` to allow the function to be called outside of a Modal context. This could be important to know as there will likely be MANY such cases where the functions called must be called within a Modal in order to edit by JS Script.
 
+## Solving the Issue with Consecutive Executions
+
+Calling this function repeatedly also adds the hard-coded text to the layer names repeatedly, resulting in names like `Layer 1 (100 %) (100 %) ... (100 %)`
+
+To solve this they offer a regex solution in the `forEach` loop. 
+
+It looks for the layer's name without the opacity appendeded using a lookup that saves everything before a parenthesis followed by digits, followed by a space and an percentage sign and a closing perenthesis, saving the match as the `baseName`.
+
+Then the function updates this base name with the current opacity. 
