@@ -69,11 +69,14 @@ async function exportReport() {
       "\t" +
       (layer.visible ? "yes" : "no");
   });
-
+  console.log(tsvString)
   // save the string to the filesystem as "layers.tsv"
   const storage = window.require("uxp").storeage;
+  console.log("Storage loaded");
   const file = await storage.localFileSystem.getFileForSaving("layers.tsv");
+  console.log("storage opened with filename");
   await file.write(tsvString);
+  console.log("string saved to file");
 };
 
 document
