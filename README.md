@@ -62,5 +62,7 @@ Viewing the [The Photoshop API Reference](https://developer.adobe.com/photoshop/
 
 ## Adjusting the Plugin: Editing the PS Document
 
-We remove the `sp-body` tags and rename the button to `Rename Layers`
+1. We remove the `sp-body` tags and rename the button to `Rename Layers`
+
+2. Now we update `index.js` to add the function, `renmeLayerNames`, allowing write access to the document, by calling the Photoshop Core Module function `executeAsModal` to allow the function to be called outside of a Modal context. This could be important to know as there will likely be MANY such cases where the functions called must be called within a Modal in order to edit by JS Script.
 
