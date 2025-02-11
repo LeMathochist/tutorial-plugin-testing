@@ -17,7 +17,10 @@ Click the ••• button next to the corresponding workspace entry, and click 
 ## Documentation
 
 * Read more about creating and debugging plugins using the UDT application [here](https://developer.adobe.com/photoshop/uxp/2022/guides/devtool/udt-walkthrough/). 
+
 * We build on this starter template and show you how to [edit a document](https://developer.adobe.com/photoshop/uxp/2022/guides/getting-started/editing-the-document/) and [write a file](https://developer.adobe.com/photoshop/uxp/2022/guides/getting-started/writing-a-file/) using UXP. 
+
+* [The Photoshop API Reference](https://developer.adobe.com/photoshop/uxp/2022/ps_reference/)
 
 ## How it Works
 
@@ -50,3 +53,10 @@ In this tutorial, this file defines a `click` listener on the 'Populate Layers' 
 The function `showLayerNames()` is defined to import the `Photoshop` API module when called. 
 
 We can do this with various API modules. 
+
+## Adjusting the Plugin: Add Opacity
+
+**NB. During Development, if you started the plugin with `Load`, when you update `manifest.json`, we must fully reload the plugin in the UDT. If you instead start it with `Load & Watch`, UDT will watch the project folder for changes and automatically reload it with the changes** 
+
+Viewing the [The Photoshop API Reference](https://developer.adobe.com/photoshop/uxp/2022/ps_reference/), and looking at the `Layer class`
+
