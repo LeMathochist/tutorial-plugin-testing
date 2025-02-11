@@ -53,6 +53,7 @@ function renameLayerNames() {
   );
 };
 
+
 async function exportReport() {
   // create a TSV String; this is the header row
   let tsvString = "Base name\tOpacity\tIsVisible";
@@ -73,12 +74,11 @@ async function exportReport() {
   const storage = window.require("uxp").storeage;
   const file = await storage.localFileSystem.getFileForSaving("layers.tsv");
   await file.write(tsvString);
-}
+};
 
+document
+.getElementById("btnRename")
+.addEventListener("click", renameLayerNames);
 document
   .getElementById("btnExport")
   .addEventListener("click", exportReport);
-
-document
-  .getElementById("btnRename")
-  .addEventListener("click", renameLayerNames);
